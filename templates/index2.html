@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Prediction</title>
+
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<style>
+    .mine{
+        height: 40vh;
+        padding-top: 10vh;   
+        background-color: whitesmoke; 
+        }
+    .heading{
+        font-weight: 100;
+        font-size: 4em;
+        text-shadow: 1px 1px 5px black;
+    }
+    img{
+        height: 90%;
+        width: 100%;
+    }
+    .text{
+        font-size: 32px;
+        font-style:italic;
+    }
+
+</style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="mine jumbotron">
+            <div class="container">
+              <h1 class="heading display-4">Facial Emotion Prediction</h1>
+              <p class="lead">Upload your image to predict your emotion..</p>
+            </div>
+          </div>
+       
+   
+
+    <form class="form-inline" method="POST" action= "/" enctype="multipart/form-data">
+        <label><b>Image: &nbsp; &nbsp; </b></label>
+        <input class = "form-control" type="file" name = "userfile" placeholder="Your image">
+        <button type="submit" class="btn btn-primary" >Submit </button>
+
+    </form>
+    <br>
+    <br>
+    {% if your_result %}
+    <div class="row">
+        <div class="col-sm-4">
+            <img src='{{ your_result['image']}}'>
+       </div>
+       <div class-"col-sm-8">
+            <p class="text"> Predicted emotion. </p>
+            <p>The person is : <b>{{ your_result['emotion'] }}</b></p>
+        </div> 
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="container">
+        <a href="/cam" class="btn btn-primary btn-lg btn-block" role="button"> Live Camera for Prediction</a> 
+    </div>
+    
+    
+
+</body>
+</html>
