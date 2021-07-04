@@ -2,6 +2,7 @@ from flask import Flask, render_template, Response, request
 import cv2
 import  camerahelper 
 import predictEmo
+import speechRecognitionhelper
 
 app = Flask(__name__)
 
@@ -33,7 +34,27 @@ def cap():
         'emotion': emo
     }
 
-    return render_template("index2.html", your_result = result_dic )       
+    return render_template("index2.html", your_result = result_dic )     
+
+
+@app.route('/speech')
+def sp():
+    return render_template("index3.html")
+
+
+@app.route('/speech', methods = ['POST'])
+def speech():
+    if request.method == 'POST':
+        f = request.files['userfile']
+        path = "./static/{}".format(f.filename)
+        f.save(path)
+
+    emo = speechRecognitionhelper.predictSpeech(path)
+    result_dic = {
+        'emotion': emo
+    }
+
+    return render_template("index3.html", your_result = result_dic )        
 
 @app.route('/video_feed')
 def video_feed():

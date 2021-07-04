@@ -25,6 +25,10 @@
         font-size: 32px;
         font-style:italic;
     }
+    .button{
+        display: flex;
+        justify-content: space-around;
+    }
 
 </style>
 </head>
@@ -59,11 +63,17 @@
         </div> 
     </div>
     {% endif %}
-    </div>
-
+   
+<div class = "button">
     <div class="container">
         <a href="/cam" class="btn btn-primary btn-lg btn-block" role="button"> Live Camera for Prediction</a> 
     </div>
+
+    <div class="container">
+        <a href="/speech" class="btn btn-primary btn-lg btn-block" role="button"> Speech Emotion Prediction</a> 
+    </div>
+</div>
+</div>
     
     
 
